@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA8821301E52A8F70043EBB5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA88212F1E52A8F70043EBB5 /* OpenGLES.framework */; };
+		AA8821321E52A8FC0043EBB5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA8821311E52A8FC0043EBB5 /* QuartzCore.framework */; };
+		AA8821351E52A9790043EBB5 /* OpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8821341E52A9790043EBB5 /* OpenGLView.m */; };
 		AABE3BA51E529AD900A62733 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE3BA41E529AD900A62733 /* main.m */; };
 		AABE3BA81E529AD900A62733 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE3BA71E529AD900A62733 /* AppDelegate.m */; };
 		AABE3BAB1E529AD900A62733 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABE3BAA1E529AD900A62733 /* ViewController.m */; };
@@ -16,6 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA88212F1E52A8F70043EBB5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		AA8821311E52A8FC0043EBB5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AA8821331E52A9790043EBB5 /* OpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGLView.h; sourceTree = "<group>"; };
+		AA8821341E52A9790043EBB5 /* OpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenGLView.m; sourceTree = "<group>"; };
 		AABE3BA01E529AD900A62733 /* iOpenGLDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOpenGLDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AABE3BA41E529AD900A62733 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AABE3BA61E529AD900A62733 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -33,17 +40,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA8821321E52A8FC0043EBB5 /* QuartzCore.framework in Frameworks */,
+				AA8821301E52A8F70043EBB5 /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA88212E1E52A8F60043EBB5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA8821311E52A8FC0043EBB5 /* QuartzCore.framework */,
+				AA88212F1E52A8F70043EBB5 /* OpenGLES.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AABE3B971E529AD900A62733 = {
 			isa = PBXGroup;
 			children = (
 				AABE3BA21E529AD900A62733 /* iOpenGLDemo */,
 				AABE3BA11E529AD900A62733 /* Products */,
+				AA88212E1E52A8F60043EBB5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +81,8 @@
 				AABE3BA71E529AD900A62733 /* AppDelegate.m */,
 				AABE3BA91E529AD900A62733 /* ViewController.h */,
 				AABE3BAA1E529AD900A62733 /* ViewController.m */,
+				AA8821331E52A9790043EBB5 /* OpenGLView.h */,
+				AA8821341E52A9790043EBB5 /* OpenGLView.m */,
 				AABE3BAC1E529AD900A62733 /* Main.storyboard */,
 				AABE3BAF1E529AD900A62733 /* Assets.xcassets */,
 				AABE3BB11E529AD900A62733 /* LaunchScreen.storyboard */,
@@ -153,6 +174,7 @@
 				AABE3BAB1E529AD900A62733 /* ViewController.m in Sources */,
 				AABE3BA81E529AD900A62733 /* AppDelegate.m in Sources */,
 				AABE3BA51E529AD900A62733 /* main.m in Sources */,
+				AA8821351E52A9790043EBB5 /* OpenGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +329,7 @@
 				AABE3BB91E529AD900A62733 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
