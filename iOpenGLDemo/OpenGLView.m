@@ -7,10 +7,12 @@
 //
 
 #import "OpenGLView.h"
+#import "GLESUtils.h"
 
 @interface OpenGLView ()
 
 - (void)setupLayer;
+- (void)setupProgram;
 
 @end
 
@@ -28,6 +30,8 @@
     [self setupRenderBuffer];
     [self setupFrameBuffer];
     
+    [self setupProgram];
+    
     [self render];
 }
 
@@ -41,6 +45,56 @@
                                           kEAGLDrawablePropertyRetainedBacking: [NSNumber numberWithBool:NO],
                                           kEAGLDrawablePropertyColorFormat: kEAGLColorFormatRGBA8
                                           };
+}
+
+- (void)setupProgram {
+    /*
+     * load shader
+     */
+    NSString *vertexShaderPath = [[NSBundle mainBundle] pathForResource:@"VertexShader"
+                                                                ofType:@"glsl"];
+    NSString *fragmentShaderPath = [[NSBundle mainBundle] pathForResource:@"FragmentShader"
+                                                                   ofType:@"glsl"];
+    
+    GLuint vertexShader = [GLESUtils loadShader:GL_VERTEX_SHADER withFilePath:vertexShaderPath];
+    GLuint fragmentShader = [GLESUtils loadShader:GL_FRAGMENT_SHADER withFilePath:fragmentShaderPath];
+    
+    // create program, attach shaderes
+    self.programHandle = glCreateProgram();
+    if (!self.programHandle) {
+        NSLog(@"Failed to create program");
+        return;
+    }
+    
+    glAttachShader(self.programHandle, vertexShader);
+    glAttachShader(self.programHandle, fragmentShader);
+    
+    // link program
+    glLinkProgram(self.programHandle);
+    
+    // check link status
+    GLint linked;
+    glGetProgramiv(self.programHandle, GL_LINK_STATUS, &linked);
+    if (!linked) {
+        GLint infoLen = 0;
+        glGetProgramiv(self.programHandle, GL_INFO_LOG_LENGTH, &infoLen);
+        
+        if (infoLen > 1) {
+            char *infoLog = malloc(sizeof(char) * infoLen);
+            glGetProgramInfoLog(self.programHandle, infoLen, NULL, infoLog);
+            NSLog(@"Error linking program:\n%s\n", infoLog);
+            free(infoLog);
+        }
+        
+        glDeleteProgram(self.programHandle);
+        self.programHandle = 0;
+        return;
+    }
+    
+    glUseProgram(self.programHandle);
+    
+    // get attribute slot from program
+    self.positionSlot = glGetAttribLocation(self.programHandle, "vPosition");
 }
 
 - (void)setupContext {
@@ -114,11 +168,35 @@
      * glClearColor用来设置清屏颜色，默认为黑色
      */
     glClearColor(0, 1.0, 0, 1.0);
+    
     /*
      * glClear(GLbitfieldmask)用来指定要用清屏颜色来清除由mask指定的buffer
      * mask 可以是 GL_COLOR_BUFFER_BIT，GL_DEPTH_BUFFER_BIT和GL_STENCIL_BUFFER_BIT的自由组合。
      */
     glClear(GL_COLOR_BUFFER_BIT);
+   
+    /*
+     * 设置 viewport
+     * glViewport  表示渲染 surface 将在屏幕上的哪个区域呈现出来，
+     */
+    glViewport(0, 0, self.frame.size.width, self.frame.size.height);
+    
+    GLfloat vertices[] = {
+        0.0f,  0.5f,  0.0f,
+        -0.5f, -0.5f, 0.0f,
+        0.5f,  -0.5f, 0.0f,
+    };
+    
+    /*
+     * load the vertext data 
+     * glVertexAttribPointer将三角形顶点数据装载到OpenGL ES中并与vPosition并联起来
+     */
+    glVertexAttribPointer(self.positionSlot, 3, GL_FLOAT, GL_FALSE, 0, vertices);
+    glEnableVertexAttribArray(self.positionSlot);
+    
+    // drae triangle
+    glDrawArrays(GL_TRIANGLES, 0, 3);
+    
     /*
      * (BOOL)presentRenderbuffer:(NSUInteger)target 是将指定 renderbuffer 呈现在屏幕上，
      * 在这里我们指定的是前面已经绑定为当前 renderbuffer 的那个，在 renderbuffer 可以被呈现之前，

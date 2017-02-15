@@ -16,6 +16,9 @@
 		AABE3BAE1E529AD900A62733 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABE3BAC1E529AD900A62733 /* Main.storyboard */; };
 		AABE3BB01E529AD900A62733 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AABE3BAF1E529AD900A62733 /* Assets.xcassets */; };
 		AABE3BB31E529AD900A62733 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AABE3BB11E529AD900A62733 /* LaunchScreen.storyboard */; };
+		AAF879401E543E6C00736D2C /* GLESUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AAF8793F1E543E6C00736D2C /* GLESUtils.m */; };
+		AAF879441E5444A000736D2C /* VertexShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AAF879431E54445700736D2C /* VertexShader.glsl */; };
+		AAF879461E54450200736D2C /* FragmentShader.glsl in Resources */ = {isa = PBXBuildFile; fileRef = AAF879451E5444CD00736D2C /* FragmentShader.glsl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,10 @@
 		AABE3BAF1E529AD900A62733 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AABE3BB21E529AD900A62733 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AABE3BB41E529AD900A62733 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAF8793E1E543E6C00736D2C /* GLESUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLESUtils.h; sourceTree = "<group>"; };
+		AAF8793F1E543E6C00736D2C /* GLESUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLESUtils.m; sourceTree = "<group>"; };
+		AAF879431E54445700736D2C /* VertexShader.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = VertexShader.glsl; sourceTree = "<group>"; };
+		AAF879451E5444CD00736D2C /* FragmentShader.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = FragmentShader.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +90,8 @@
 				AABE3BAA1E529AD900A62733 /* ViewController.m */,
 				AA8821331E52A9790043EBB5 /* OpenGLView.h */,
 				AA8821341E52A9790043EBB5 /* OpenGLView.m */,
+				AAF8793E1E543E6C00736D2C /* GLESUtils.h */,
+				AAF8793F1E543E6C00736D2C /* GLESUtils.m */,
 				AABE3BAC1E529AD900A62733 /* Main.storyboard */,
 				AABE3BAF1E529AD900A62733 /* Assets.xcassets */,
 				AABE3BB11E529AD900A62733 /* LaunchScreen.storyboard */,
@@ -96,6 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				AABE3BA41E529AD900A62733 /* main.m */,
+				AAF879431E54445700736D2C /* VertexShader.glsl */,
+				AAF879451E5444CD00736D2C /* FragmentShader.glsl */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -158,6 +169,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAF879461E54450200736D2C /* FragmentShader.glsl in Resources */,
+				AAF879441E5444A000736D2C /* VertexShader.glsl in Resources */,
 				AABE3BB31E529AD900A62733 /* LaunchScreen.storyboard in Resources */,
 				AABE3BB01E529AD900A62733 /* Assets.xcassets in Resources */,
 				AABE3BAE1E529AD900A62733 /* Main.storyboard in Resources */,
@@ -173,6 +186,7 @@
 			files = (
 				AABE3BAB1E529AD900A62733 /* ViewController.m in Sources */,
 				AABE3BA81E529AD900A62733 /* AppDelegate.m in Sources */,
+				AAF879401E543E6C00736D2C /* GLESUtils.m in Sources */,
 				AABE3BA51E529AD900A62733 /* main.m in Sources */,
 				AA8821351E52A9790043EBB5 /* OpenGLView.m in Sources */,
 			);

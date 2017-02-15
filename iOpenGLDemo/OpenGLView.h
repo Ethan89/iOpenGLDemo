@@ -17,5 +17,7 @@
 @property (strong, nonatomic) EAGLContext *context;
 @property (nonatomic) GLuint colorRenderBuffer;
 @property (nonatomic) GLuint frameBuffer;
+@property (nonatomic) GLuint programHandle;
+@property (nonatomic) GLuint positionSlot;
 
 @end
